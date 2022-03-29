@@ -11,6 +11,8 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { SocketModule } from './socket/socket.module';
 import { ConfigModule } from '@nestjs/config';
+import { InmueblesModule } from './inmuebles/inmuebles.module';
+import { InmobiliariaModule } from './inmobiliaria/inmobiliaria.module';
 
 @Module({
   imports: [
@@ -38,7 +40,7 @@ import { ConfigModule } from '@nestjs/config';
     UsuariosModule, 
     AuthModule,
     InicializacionModule,  // Para inicializacion de tablas - Configurable en el controlador/servicio
-    SocketModule,          // Para trabajar con WebSocket
+    SocketModule, InmueblesModule, InmobiliariaModule,          // Para trabajar con WebSocket
     
   ],
   
