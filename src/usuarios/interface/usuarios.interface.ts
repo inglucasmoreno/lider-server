@@ -8,6 +8,6 @@ export interface IUsuario extends Document {
     password: string;
     readonly email: string;
     readonly role: string;
-    readonly permisos: [];
+    readonly permisos: string[];
     readonly activo: boolean;
 }

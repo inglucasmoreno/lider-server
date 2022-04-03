@@ -1,29 +1,23 @@
 
 import { Schema } from 'mongoose';
 
-export const inmobiliariaSchema = new Schema({
+export const consultaSchema = new Schema({
 
-    nombre: {
+    codigo: {
+        type: String,
+        default: '',
+        trim: true
+    },
+
+    apellido: {
         type: String,
         required: true,
         trim: true
     },
 
-    logo: {
+    nombre: {
         type: String,
-        default: '',
-        trim: true
-    },
-
-    descripcion: {
-        type: String,
-        default: '',
-        trim: true
-    },
-
-    direccion: {
-        type: String,
-        default: '',
+        required: true,
         trim: true
     },
 
@@ -39,14 +33,21 @@ export const inmobiliariaSchema = new Schema({
         trim: true
     },
 
-    foto_principal: {
+    asunto: {
         type: String,
+        required: true,
         trim: true
     },
 
-    fotos: {
-        type: Array,
+    mensaje: {
+        type: String,
+        required: true,
         trim: true
+    },
+
+    activo: {
+        type: Boolean,
+        default: true,
     },
 
 },{ timestamps: true });

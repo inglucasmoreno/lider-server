@@ -31,7 +31,7 @@ export class InmobiliariaService {
     }
 
     // Actualizar inmobiliaria
-    async actualizarInmobiliaria(id: string, inmobiliariaUpdateDTO: InmobiliariaUpdateDTO): Promise<IInmobiliaria> {
+    async actualizarInmobiliaria(id: string, inmobiliariaUpdateDTO: any): Promise<IInmobiliaria> {
         let inmobiliariaDB = await this.getInmobiliaria(id);
         if(!inmobiliariaDB) throw new NotFoundException('La inmobiliaria no existe');       
         const inmobiliariaRes = await this.inmobiliariaModel.findByIdAndUpdate(id, inmobiliariaUpdateDTO, {new: true});

@@ -2,7 +2,25 @@
 import { Schema } from 'mongoose';
 
 export const inmuebleSchema = new Schema({
-    
+
+    propietario: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'propietario'
+    },
+
+    provincia: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'provincia'
+    },
+
+    codigo: {
+        type: String,
+        required: true,
+        trim: true
+    },
+
     descripcion_corta: {
         type: String,
         required: true,
@@ -15,14 +33,15 @@ export const inmuebleSchema = new Schema({
         trim: true
     },
 
-    codigo: {
+    ubicacion_publica: {
         type: String,
         required: true,
         trim: true
     },
 
-    ubicacion: {
+    ubicacion_privada: {
         type: String,
+        required: true,
         trim: true
     },
 
@@ -32,24 +51,34 @@ export const inmuebleSchema = new Schema({
         trim: true
     },
 
+    foto_principal: {
+        type: String,
+        default: ""
+    },
+
+    fotos: {
+        type: Array,
+        default: []
+    },
+
     venta: {
         type: Boolean,
         required: true,
     },
 
-    fotos: {
-        type: Array,
+    precio_mostrar: {
+        type: Boolean,
+        default: true
     },
 
-    precio: {
-        valor: {
-            type: Number,
-            required: true
-        },
-        dolar: {
-            type: Boolean,
-            required: true
-        }
+    precio_dolar: {
+        type: Boolean,
+        default: false
+    },
+
+    precio_valor: {
+        type: Number,
+        required: true
     },
     
     activo: {

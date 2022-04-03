@@ -13,6 +13,9 @@ import { SocketModule } from './socket/socket.module';
 import { ConfigModule } from '@nestjs/config';
 import { InmueblesModule } from './inmuebles/inmuebles.module';
 import { InmobiliariaModule } from './inmobiliaria/inmobiliaria.module';
+import { PropietariosModule } from './propietarios/propietarios.module';
+import { ProvinciasModule } from './provincias/provincias.module';
+import { ConsultasModule } from './consultas/consultas.module';
 
 @Module({
   imports: [
@@ -40,7 +43,7 @@ import { InmobiliariaModule } from './inmobiliaria/inmobiliaria.module';
     UsuariosModule, 
     AuthModule,
     InicializacionModule,  // Para inicializacion de tablas - Configurable en el controlador/servicio
-    SocketModule, InmueblesModule, InmobiliariaModule,          // Para trabajar con WebSocket
+    SocketModule, InmueblesModule, InmobiliariaModule, PropietariosModule, ProvinciasModule, ConsultasModule,          // Para trabajar con WebSocket
     
   ],
   

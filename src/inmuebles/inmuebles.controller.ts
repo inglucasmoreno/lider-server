@@ -27,6 +27,21 @@ export class InmueblesController {
         });
     }
 
+    // Inmueble por codigo
+    @UseGuards(JwtAuthGuard)
+    @ApiBearerAuth()
+    @ApiOkResponse({ description: 'Inmueble obtenido correctamente' })
+    @ApiUnauthorizedResponse({ description: 'El usuario no esta autorizado para realizar esta accion' })
+    @ApiParam({name: 'codigo', required: true, description: 'Codigo de inmueble', type: 'string'})
+    @Get('/codigo/:codigo')
+    async getInmueblePorCodigo(@Res() res, @Param('codigo') codigoInmueble) {
+        const inmueble = await this.inmueblesService.getInmueblePorCodigo(codigoInmueble);
+        res.status(HttpStatus.OK).json({
+            message: 'Inmueble obtenido correctamente',
+            inmueble
+        });
+    }
+
     // Listar inmuebles
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()

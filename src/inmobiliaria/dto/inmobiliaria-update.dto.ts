@@ -2,15 +2,15 @@ import { ApiProperty } from "@nestjs/swagger";
 
 export class InmobiliariaUpdateDTO {
     
-    @ApiProperty({ type: String, required: true, description: 'Descripcion de inmobiliaria' })
-    readonly descripcion: string;
-    
-    @ApiProperty({ type: String, required: true, description: 'Logo de inmobiliaria' })
+    @ApiProperty({ type: String, description: 'Nombre de imobiliaria' })
+    readonly nombre: string;
+
+    @ApiProperty({ type: String, description: 'Logo de inmobiliaria' })
     readonly logo: string;
-    
-    @ApiProperty({ type: Array, required: true, description: 'Fotos de inmobiliaria' })
-    readonly fotos: Array<string>;
-   
+
+    @ApiProperty({ type: String, description: 'Descripcion de inmobiliaria' })
+    readonly descripcion: string;
+
     @ApiProperty({ type: String, description: 'Direccion de inmobiliaria' })
     readonly direccion: string;
 
@@ -18,6 +18,12 @@ export class InmobiliariaUpdateDTO {
     readonly telefono: string;
 
     @ApiProperty({ type: String, description: 'Email de inmobiliaria' })
-    readonly email: string;
+    readonly email: string;    
+
+    @ApiProperty({ type: String, description: 'Foto principal de inmobiliaria' })
+    readonly foto_principal: string;    
+
+    @ApiProperty({ type: Array, description: 'Fotos de inmobiliaria' })
+    readonly fotos: Array<string>;
 
 }
