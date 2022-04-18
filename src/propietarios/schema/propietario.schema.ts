@@ -5,6 +5,7 @@ export const propietarioSchema = new Schema({
 
     descripcion: {
         type: String,
+        uppercase: true,
         required: true,
         trim: true
     },
@@ -29,19 +30,22 @@ export const propietarioSchema = new Schema({
 
     direccion: {
         type: String,
+        uppercase: true,
         default: '',
         trim: true
     },
 
     email: {
         type: String,
+        lowercase: true,
         default: '',
         trim: true
     },
 
     foto_principal: {
         type: String,
-        trim: true
+        trim: true,
+        default: ''
     },
 
     activo: {
