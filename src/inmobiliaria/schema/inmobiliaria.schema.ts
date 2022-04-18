@@ -17,36 +17,40 @@ export const inmobiliariaSchema = new Schema({
 
     descripcion: {
         type: String,
-        default: '',
+        required: true,
         trim: true
     },
 
     direccion: {
         type: String,
-        default: '',
-        trim: true
+        required: true,
+        trim: true,
+        default: ''
     },
 
     telefono: {
         type: String,
-        default: '',
+        required: true,
         trim: true
     },
 
     email: {
         type: String,
-        default: '',
-        trim: true
+        required: true,
+        lowercase: true,
+        trim: true,
     },
 
     foto_principal: {
         type: String,
-        trim: true
+        trim: true,
+        default: ''
     },
 
     fotos: {
         type: Array,
-        trim: true
+        trim: true,
+        default: []
     },
 
 },{ timestamps: true });
