@@ -4,6 +4,7 @@ export const provinciaSchema = new Schema({
 
     descripcion: {
         type: String,
+        uppercase: true,
         required: true,
         trim: true
     },
