@@ -61,8 +61,8 @@ export const inmuebleSchema = new Schema({
         default: []
     },
 
-    venta: {
-        type: Boolean,
+    alquiler_venta: {
+        type: String,
         required: true,
     },
 

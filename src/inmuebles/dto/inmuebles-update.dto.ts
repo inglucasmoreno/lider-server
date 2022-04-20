@@ -32,8 +32,8 @@ export class InmuebleUpdateDTO {
     @ApiProperty({ type: 'Array', description: 'Fotos de inmueble' })
     readonly fotos: Array<string>;
     
-    @ApiProperty({ type: Boolean, description: 'Es venta?' })
-    readonly venta: boolean;
+    @ApiProperty({ type: String, description: 'Es alquiler o venta?' })
+    readonly alquier_venta: string;
 
     @ApiProperty({ type: Boolean, description: 'Mostrar el precio de forma publica?' })
     readonly precio_mostrar: boolean;

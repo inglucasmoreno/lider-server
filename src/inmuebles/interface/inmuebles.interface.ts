@@ -11,7 +11,8 @@ export interface IInmueble extends Document {
     readonly tipo: string;
     readonly fotos_principal: string;
     readonly fotos: string[];
-    readonly venta: boolean;
+    readonly alquiler_venta: string;
+    readonly precio_mostrar: boolean;
     readonly precio_dolar: boolean;
     readonly precio_valor: number;
     readonly activo: boolean;

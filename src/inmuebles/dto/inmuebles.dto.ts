@@ -37,8 +37,8 @@ export class InmuebleDTO {
     readonly fotos: Array<string>;
     
     @IsNotEmpty()
-    @ApiProperty({ type: Boolean, required: true, description: 'Es venta?' })
-    readonly venta: boolean;
+    @ApiProperty({ type: String, required: true, description: 'Es alquiler o venta?' })
+    readonly alquiler_venta: string;
 
     @ApiProperty({ type: Boolean, default: true, description: 'Mostrar el precio de forma publica?' })
     readonly precio_mostrar: boolean;
