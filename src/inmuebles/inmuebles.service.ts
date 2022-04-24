@@ -49,6 +49,18 @@ export class InmueblesService {
 
         pipeline.push({$unwind: '$provincia'}); 
 
+        // Informacion de localidad
+        pipeline.push({
+            $lookup: {
+                from: 'localidades',
+                localField: 'localidad',
+                foreignField: '_id',
+                as: 'localidad'
+            }
+        });
+
+        pipeline.push({$unwind: '$localidad'}); 
+
         const inmueble = await this.inmuebleModel.aggregate(pipeline);
 
         return inmueble;
