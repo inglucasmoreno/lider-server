@@ -17,6 +17,7 @@ import { PropietariosModule } from './propietarios/propietarios.module';
 import { ProvinciasModule } from './provincias/provincias.module';
 import { ConsultasModule } from './consultas/consultas.module';
 import { LocalidadesModule } from './localidades/localidades.module';
+import { CodigosModule } from './codigos/codigos.module';
 
 @Module({
   imports: [
@@ -44,7 +45,7 @@ import { LocalidadesModule } from './localidades/localidades.module';
     UsuariosModule, 
     AuthModule,
     InicializacionModule,  // Para inicializacion de tablas - Configurable en el controlador/servicio
-    SocketModule, InmueblesModule, InmobiliariaModule, PropietariosModule, ProvinciasModule, ConsultasModule, LocalidadesModule,          // Para trabajar con WebSocket
+    SocketModule, InmueblesModule, InmobiliariaModule, PropietariosModule, ProvinciasModule, ConsultasModule, LocalidadesModule, CodigosModule,          // Para trabajar con WebSocket
     
   ],
   

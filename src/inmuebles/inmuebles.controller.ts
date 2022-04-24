@@ -63,7 +63,8 @@ export class InmueblesController {
     @ApiUnauthorizedResponse({ description: 'El usuario no esta autorizado para realizar esta accion' })
     @ApiBody({ type: InmuebleDTO })
     @Post('/')
-    async crearInmueble(@Res() res, @Body() inmuebleDTO: InmuebleDTO ) {       
+    async crearInmueble(@Res() res, @Body() inmuebleDTO: InmuebleDTO ) {    
+        console.log(inmuebleDTO);   
         const inmueble = await this.inmueblesService.crearInmueble(inmuebleDTO);        
         res.status(HttpStatus.CREATED).json({
             message: 'Inmueble creado correctamente',

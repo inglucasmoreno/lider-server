@@ -8,6 +8,9 @@ export class InmuebleUpdateDTO {
     @ApiProperty({ type: String, description: 'Provincia en la que se encuentra el inmueble' })
     readonly provincia: string;
 
+    @ApiProperty({ type: String, description: 'Localidad en la que se encuentra el inmueble' })
+    readonly localidad: string;
+
     @ApiProperty({ type: String, description: 'Codigo de inmueble' })
     readonly codigo: string;
 
@@ -38,8 +41,8 @@ export class InmuebleUpdateDTO {
     @ApiProperty({ type: Boolean, description: 'Mostrar el precio de forma publica?' })
     readonly precio_mostrar: boolean;
 
-    @ApiProperty({ type: Boolean, description: 'ARG o Dolares?' })
-    readonly precio_dolar: boolean;
+    @ApiProperty({ type: String, description: 'Tipo de moneda' })
+    readonly precio_moneda: string;
 
     @ApiProperty({ type: Number, description: 'Precio del inmueble' })
     readonly precio_valor: number;

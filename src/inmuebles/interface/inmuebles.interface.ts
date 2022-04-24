@@ -3,6 +3,7 @@ import { Document } from 'mongoose';
 export interface IInmueble extends Document {
     readonly propietario: string;
     readonly provincia: string;
+    readonly localidad: string;
     readonly codigo: string;
     readonly descripcion_corta: string;
     readonly descripcion_completa: string;
@@ -13,7 +14,7 @@ export interface IInmueble extends Document {
     readonly fotos: string[];
     readonly alquiler_venta: string;
     readonly precio_mostrar: boolean;
-    readonly precio_dolar: boolean;
+    readonly precio_moneda: string;
     readonly precio_valor: number;
     readonly activo: boolean;
 }

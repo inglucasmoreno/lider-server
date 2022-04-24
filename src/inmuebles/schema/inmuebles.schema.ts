@@ -15,10 +15,16 @@ export const inmuebleSchema = new Schema({
         ref: 'provincia'
     },
 
+    localidad: {
+        type: Schema.Types.ObjectId,
+        ref: 'localidad',
+        default: null
+    },
+
     codigo: {
         type: String,
-        required: true,
-        trim: true
+        trim: true,
+        default: ''
     },
 
     descripcion_corta: {
@@ -71,8 +77,8 @@ export const inmuebleSchema = new Schema({
         default: true
     },
 
-    precio_dolar: {
-        type: Boolean,
+    precio_moneda: {
+        type: String,
         default: false
     },
 

@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { ILocalidad } from 'src/localidades/interface/localidades.interface';
 import { ProvinciaUpdateDTO } from './dto/provincia-update.dto';
 import { ProvinciaDTO } from './dto/provincia.dto';
 import { IProvincia } from './interface/provincia.interface';
@@ -8,7 +9,10 @@ import { IProvincia } from './interface/provincia.interface';
 @Injectable()
 export class ProvinciasService {
 
-    constructor(@InjectModel('Provincia') private readonly provinciaModel: Model<IProvincia>){}
+    constructor(
+        @InjectModel('Provincia') private readonly provinciaModel: Model<IProvincia>,
+        @InjectModel('Localidad') private readonly localidadModel: Model<ILocalidad>
+    ){}
     
     // Provincia por ID
     async getProvincia(id: string): Promise<IProvincia> {
@@ -32,8 +36,23 @@ export class ProvinciasService {
 
     // Crear provincia
     async crearProvincia(provinciaDTO: ProvinciaDTO): Promise<IProvincia> {
+        
+        // Se crear la provincia
         const nuevaProvincia = new this.provinciaModel(provinciaDTO);
-        return await nuevaProvincia.save();
+        const provincia = await nuevaProvincia.save();
+        
+        // Se crea localidad con el mismo nombre
+        const dataLocalidad = {
+            provincia: provincia._id,
+            descripcion: provinciaDTO.descripcion
+        }
+
+        const nuevaLocalidad = new this.localidadModel(dataLocalidad)
+        await nuevaLocalidad.save();
+
+        // Se retorna la provincia
+        return provincia;
+
     }
 
     // Actualizar provincia
