@@ -43,10 +43,7 @@ export class InmueblesController {
     }
 
     // Listar inmuebles
-    @UseGuards(JwtAuthGuard)
-    @ApiBearerAuth()
     @ApiOkResponse({ description: 'Listado de inmuebles correcto' })
-    @ApiUnauthorizedResponse({ description: 'El usuario no esta autorizado para realizar esta accion' })
     @Get('/')
     async listarInmuebles(@Res() res, @Query() querys) {
         const inmuebles = await this.inmueblesService.listarInmuebles(querys);
