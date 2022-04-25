@@ -27,10 +27,7 @@ export class InmobiliariaController {
     }
 
     // Listar inmobiliarias
-    @UseGuards(JwtAuthGuard)
-    @ApiBearerAuth()
     @ApiOkResponse({ description: 'Listado de inmobiliarias correcto' })
-    @ApiUnauthorizedResponse({ description: 'El usuario no esta autorizado para realizar esta accion' })
     @Get('/')
     async listarInmobiliarias(@Res() res, @Query() querys) {
         const inmobiliarias = await this.inmobiliariasService.listarInmobiliarias(querys);
