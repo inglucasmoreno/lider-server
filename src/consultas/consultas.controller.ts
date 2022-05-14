@@ -41,10 +41,7 @@ export class ConsultasController {
     }
 
     // Crear consulta
-    @UseGuards(JwtAuthGuard)
-    @ApiBearerAuth()
     @ApiCreatedResponse({ description: 'Consulta creada correctamente' })
-    @ApiUnauthorizedResponse({ description: 'El usuario no esta autorizado para realizar esta accion' })
     @ApiBody({ type: ConsultaDTO })
     @Post('/')
     async crearConsulta(@Res() res, @Body() consultaDTO: ConsultaDTO ) {       
