@@ -108,11 +108,31 @@ export class InmueblesService {
     // Listar inmuebles
     async listarInmuebles(querys: any): Promise<IInmueble[]> {
         
-        const { columna, direccion } = querys;
+        const { columna, direccion, alquiler_venta, tipo, provincia } = querys;
+
+        console.log(querys);
 
         const pipeline = [];
 
         pipeline.push({$match:{ }});
+
+        // Filtrado por Alquier/Venta
+        if(alquiler_venta && alquiler_venta.trim() !== ''){
+            pipeline.push({$match:{ alquiler_venta }});
+        }
+
+        // Filtrado por tipo de inmueble
+        if(tipo && tipo.trim() !== ''){
+            pipeline.push({$match:{ tipo }});
+        }
+
+        // Filtrado por provincia
+        if(provincia && provincia.trim() !== ''){
+            const idProvinica = new mongoose.Types.ObjectId(provincia);
+            pipeline.push({$match:{ provincia: idProvinica }});
+        }
+
+        // Filtrado por 
 
         // Informacion de propietario
         pipeline.push({

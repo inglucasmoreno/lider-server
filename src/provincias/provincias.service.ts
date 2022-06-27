@@ -30,7 +30,7 @@ export class ProvinciasService {
         let ordenar = [columna || 'descripcion', direccion || 1];
 
         const provincias = await this.provinciaModel.find()
-                                                   .sort([ordenar]);
+                                                    .sort([ordenar]);
         return provincias;
     }  
 

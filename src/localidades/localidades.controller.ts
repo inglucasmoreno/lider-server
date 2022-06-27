@@ -41,10 +41,7 @@ export class LocalidadesController {
     }
 
     // Listar localidades por provincia
-    @UseGuards(JwtAuthGuard)
-    @ApiBearerAuth()
     @ApiOkResponse({ description: 'Listado de localidades correcto' })
-    @ApiUnauthorizedResponse({ description: 'El usuario no esta autorizado para realizar esta accion' })
     @Get('/param/provincia')
     async listarLocalidadesPorProvincia(@Res() res, @Query() querys) {
         const localidades = await this.localidadesService.listarLocalidadesPorProvincia(querys);

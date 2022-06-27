@@ -27,10 +27,7 @@ export class ProvinciasController {
     }
 
     // Listar provincias
-    @UseGuards(JwtAuthGuard)
-    @ApiBearerAuth()
     @ApiOkResponse({ description: 'Listado de provincias correcto' })
-    @ApiUnauthorizedResponse({ description: 'El usuario no esta autorizado para realizar esta accion' })
     @Get('/')
     async listarProvincias(@Res() res, @Query() querys) {
         const provincias = await this.provinciasService.listarProvincias(querys);
