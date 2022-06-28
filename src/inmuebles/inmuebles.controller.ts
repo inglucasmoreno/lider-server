@@ -13,10 +13,7 @@ export class InmueblesController {
     constructor( private inmueblesService: InmueblesService ){}
 
     // Inmueble por ID
-    @UseGuards(JwtAuthGuard)
-    @ApiBearerAuth()
     @ApiOkResponse({ description: 'Inmueble obtenido correctamente' })
-    @ApiUnauthorizedResponse({ description: 'El usuario no esta autorizado para realizar esta accion' })
     @ApiParam({name: 'id', required: true, description: 'Identificador de inmueble', type: 'string'})
     @Get('/:id')
     async getInmueble(@Res() res, @Param('id') inmuebleID) {
@@ -28,10 +25,7 @@ export class InmueblesController {
     }
 
     // Inmueble por codigo
-    @UseGuards(JwtAuthGuard)
-    @ApiBearerAuth()
     @ApiOkResponse({ description: 'Inmueble obtenido correctamente' })
-    @ApiUnauthorizedResponse({ description: 'El usuario no esta autorizado para realizar esta accion' })
     @ApiParam({name: 'codigo', required: true, description: 'Codigo de inmueble', type: 'string'})
     @Get('/codigo/:codigo')
     async getInmueblePorCodigo(@Res() res, @Param('codigo') codigoInmueble) {

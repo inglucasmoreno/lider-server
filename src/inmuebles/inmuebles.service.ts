@@ -63,7 +63,7 @@ export class InmueblesService {
 
         const inmueble = await this.inmuebleModel.aggregate(pipeline);
 
-        return inmueble;
+        return inmueble[0];
 
     }  
 

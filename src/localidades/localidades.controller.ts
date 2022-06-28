@@ -12,10 +12,7 @@ export class LocalidadesController {
     constructor( private localidadesService: LocalidadesService ){}
 
     // Localidad por ID
-    @UseGuards(JwtAuthGuard)
-    @ApiBearerAuth()
     @ApiOkResponse({ description: 'Localidad obtenido correctamente' })
-    @ApiUnauthorizedResponse({ description: 'El usuario no esta autorizado para realizar esta accion' })
     @ApiParam({name: 'id', required: true, description: 'Identificador de localidad', type: 'string'})
     @Get('/:id')
     async getLocalidad(@Res() res, @Param('id') localidadID) {
@@ -27,10 +24,7 @@ export class LocalidadesController {
     }
 
     // Listar localidades
-    @UseGuards(JwtAuthGuard)
-    @ApiBearerAuth()
     @ApiOkResponse({ description: 'Listado de localidades correcto' })
-    @ApiUnauthorizedResponse({ description: 'El usuario no esta autorizado para realizar esta accion' })
     @Get('/')
     async listarLocalidades(@Res() res, @Query() querys) {
         const localidades = await this.localidadesService.listarLocalidades(querys);

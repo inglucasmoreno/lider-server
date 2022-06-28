@@ -12,10 +12,7 @@ export class InmobiliariaController {
     constructor( private inmobiliariasService: InmobiliariaService ){}
 
     // Inmobiliaria por ID
-    @UseGuards(JwtAuthGuard)
-    @ApiBearerAuth()
     @ApiOkResponse({ description: 'Inmobiliaria obtenido correctamente' })
-    @ApiUnauthorizedResponse({ description: 'El usuario no esta autorizado para realizar esta accion' })
     @ApiParam({name: 'id', required: true, description: 'Identificador de inmobiliaria', type: 'string'})
     @Get('/:id')
     async getInmobiliaria(@Res() res, @Param('id') inmobiliariaID) {

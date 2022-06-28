@@ -12,10 +12,7 @@ export class ProvinciasController {
     constructor( private provinciasService: ProvinciasService ){}
 
     // Provincia por ID
-    @UseGuards(JwtAuthGuard)
-    @ApiBearerAuth()
     @ApiOkResponse({ description: 'Provincia obtenida correctamente' })
-    @ApiUnauthorizedResponse({ description: 'El usuario no esta autorizado para realizar esta accion' })
     @ApiParam({name: 'id', required: true, description: 'Identificador de provincia', type: 'string'})
     @Get('/:id')
     async getProvincia(@Res() res, @Param('id') provinciaID) {
