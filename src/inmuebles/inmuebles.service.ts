@@ -72,8 +72,10 @@ export class InmueblesService {
 
         const pipeline = [];
 
+        const codigoUpp = codigo.toUpperCase();
+
         // Filtramos por codigo
-        pipeline.push({$match:{ codigo }});
+        pipeline.push({$match:{ codigo: codigoUpp }});
 
         // Informacion de propietario
         pipeline.push({
@@ -99,9 +101,24 @@ export class InmueblesService {
 
         pipeline.push({$unwind: '$provincia'}); 
 
+
+        // Informacion de localidad
+        pipeline.push({
+            $lookup: {
+                from: 'localidades',
+                localField: 'localidad',
+                foreignField: '_id',
+                as: 'localidad'
+            }
+        });
+
+        pipeline.push({$unwind: '$localidad'}); 
+
         const inmueble = await this.inmuebleModel.aggregate(pipeline);
 
-        return inmueble;
+        if(!inmueble[0]) throw new NotFoundException('Código de inmueble incorrecto');
+
+        return inmueble[0];
 
     }  
 
@@ -109,8 +126,6 @@ export class InmueblesService {
     async listarInmuebles(querys: any): Promise<IInmueble[]> {
         
         const { columna, direccion, alquiler_venta, tipo, provincia } = querys;
-
-        console.log(querys);
 
         const pipeline = [];
 
